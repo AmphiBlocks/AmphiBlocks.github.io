@@ -179,6 +179,7 @@
         ["{rare}","<img src='"+baseURL()+"images/rare.png'>"],
         ["{super rare}","<img src='"+baseURL()+"images/super rare.png'>"],
         ["{ultra rare}","<img src='"+baseURL()+"images/ultra rare.png'>"],
+        ["{promotional rare}","<img src='"+baseURL()+"images/promotional rare.png'>"],
         ["{dot}","<img src='"+baseURL()+"images/dot.png'>"],
         ["{bonus}","<span class=\"effect__icon\">"],
         ["{/bonus}","</span>"],
@@ -223,6 +224,8 @@ function updateArtByURL(value) {
         cardArtElement.crossOrigin = 'Anonymous'; // Enable CORS support
         cardArtElement.src = url;
         cardArtElement.onload = function() {
+            if ($("#renderButton").attr("warn-cors", true) )
+              return
             // Adjust size here
             const naturalWidth = cardArtElement.naturalWidth;
             const naturalHeight = cardArtElement.naturalHeight;
