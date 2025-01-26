@@ -42,7 +42,7 @@
         <option value="Arcane">Arcane</option>
         <option value="Astra">Astra</option>
         <option value="Crux">Crux</option>
-        <option disabled value="Exia">Exia</option>
+        <option value="Exia">Exia</option>
         <option value="Luxem">Luxem</option>
         <option value="Neos">Neos</option>
         <option disabled value="Techa">Techa</option>
@@ -88,7 +88,7 @@
 
       <label for="effect">Card Effect:</label><br>
       <textarea id="effect" name="effect" value="Card Effect" oninput="updateText('cardEffect', this.value)">{bonus}Class Bonus{/bonus} +1{sword} <i>(Apply this ability only if your champion's class matches the card's class.)</i>
-      <br><br> {tap} this card gains +1{heart}
+      <br><br> {cost}1{/cost},{tap} this card gains +1{heart} until end of turn
       <br>
       <br><b>Floating Memory<b>
       </textarea>
@@ -356,6 +356,8 @@
         ["{dot}","<img src='"+baseURL()+"images/dot.png'>"],
         ["{bonus}","<span class=\"effect__icon\">"],
         ["{/bonus}","</span>"],
+        ["{cost}","<span class=\"cost__icon\">"],
+        ["{/cost}","</span>"],		
 
       ]
       var text2 = text;

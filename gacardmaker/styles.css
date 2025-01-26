@@ -339,6 +339,24 @@ body {
   z-index:3;
 }
 
+.cost__icon {
+  -webkit-border-radius:10px;
+  background:#DDCD53;
+  color:black;
+  letter-spacing:0.2px;
+  padding: 0px 13px 0px 13px;
+  margin: 7px 0px 0px 0px;
+  font-size:16px;
+  offset-inline-start: 20px;
+  text-align:top;
+  text-shadow:none;
+  z-index:3;
+  font-weight:bold;
+  box-shadow: 0px 2px 0px rgba(0, 0, 0, 0.3);
+  position: relative; /* Ensure positioning works */
+  top: -2px; /* Offset upward by 2px */
+}
+
 #cardSetRarity {
   position: absolute;
   bottom: 16px;
