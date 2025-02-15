@@ -42,6 +42,7 @@
         <option value="Arcane">Arcane</option>
         <option value="Astra">Astra</option>
         <option value="Crux">Crux</option>
+		    <option value="Earth">Earth</option>
         <option value="Exia">Exia</option>
         <option value="Luxem">Luxem</option>
         <option value="Neos">Neos</option>
@@ -87,10 +88,11 @@
       <br><br>
 
       <label for="effect">Card Effect:</label><br>
-      <textarea id="effect" name="effect" value="Card Effect" oninput="updateText('cardEffect', this.value)">{bonus}Class Bonus{/bonus} +1{sword} <i>(Apply this ability only if your champion's class matches the card's class.)</i>
-      <br><br> {cost}1{/cost},{tap} this card gains +1{heart} until end of turn
-      <br>
-      <br><b>Floating Memory<b>
+      <textarea id="effect" name="effect" value="Card Effect" oninput="updateText('cardEffect', this.value)">{bonus}Class Bonus{/bonus} +1{sword}       {fontsize 19 px}{italic}(Apply this ability only if your champion's class matches the card's class.){/italic}{/fontsize}
+      {break 10 high}
+{cost}1{/cost},{tap} this card gains +1{heart} until end of turn
+      {break 10 high}
+{bold}{center}Floating Memory{/center}{/bold}{/fontsize}
       </textarea>
     </form>
 
@@ -358,6 +360,17 @@
         ["{/bonus}","</span>"],
         ["{cost}","<span class=\"cost__icon\">"],
         ["{/cost}","</span>"],		
+        ["{break ","<div style='padding-bottom:"],    
+        [" high}","px'></div>"],
+        ["{fontsize ","<span style='font-size:"],    
+        [" px}","px'>"],    
+        ["{/fontsize}", "</span>"],
+        ["{bold}", "<b>"],
+        ["{/bold}", "</b>"],
+        ["{italic}", "<i>"],
+        ["{/italic}", "</i>"],
+        ["{center}", "<center>"],
+        ["{/center}", "</center>"],
 
       ]
       var text2 = text;

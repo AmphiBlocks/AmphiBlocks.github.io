@@ -243,6 +243,7 @@ body {
 
 #cardEffectContainer {
   position: absolute;      
+  width:400px;
   top: 496px;
   left: 40px;
   right:40px;
