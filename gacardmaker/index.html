@@ -90,7 +90,7 @@
       <label for="effect">Card Effect:</label><br>
       <textarea id="effect" name="effect" value="Card Effect" oninput="updateText('cardEffect', this.value)">{bonus}Class Bonus{/bonus} +1{sword}       {font-size 19 px}{italic}(Apply this ability only if your champion's class matches the card's class.){/italic}{/font-size}
       {break 10 high}
-{cost}1{/cost},{tap} this card gains +1{heart} until end of turn
+{cost}1{/cost},{tap}{colon} this card gains +1{heart} until end of turn
       {break 10 high}
 {bold}{center}Floating Memory{/center}{/bold}
       </textarea>
@@ -345,6 +345,7 @@
 
       var substituteList = [
         ["{tap}",  "<img src='"+baseURL()+"images/inline-tap.png'>"],
+        ["{colon}",  "<img src='"+baseURL()+"images/inline-colon.png'>"],
         ["{sword}","<img src='"+baseURL()+"images/inline-sword.png'>"],
         ["{heart}","<img src='"+baseURL()+"images/inline-heart.png'>"],
         ["{common}","<img src='"+baseURL()+"images/common.png'>"],
@@ -374,7 +375,8 @@
 
       ]
       var text2 = text;
-      for (let i = 0; i < 5; i++) {
+      var numTimesToSubstitute = 5
+      for (let i = 0; i < numTimesToSubstitute; i++) {
         substituteList.forEach(x => text2=text2.replace(x[0], x[1]) );
       }
       return text2;
