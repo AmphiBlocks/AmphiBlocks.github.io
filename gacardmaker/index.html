@@ -374,8 +374,9 @@
 
       ]
       var text2 = text;
-      substituteList.forEach(x => text2=text2.replace(x[0], x[1]) );
-      substituteList.forEach(x => text2=text2.replace(x[0], x[1]) );
+      for (let i = 0; i < 5; i++) {
+        substituteList.forEach(x => text2=text2.replace(x[0], x[1]) );
+      }
       return text2;
     }
 
