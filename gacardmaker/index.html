@@ -94,6 +94,17 @@
       {break 10 high}
 {bold}{center}Floating Memory{/center}{/bold}
       </textarea>
+
+      <label for="charms">Charms:</label>
+      <select id="charms" name="charms" multiple onchange="updateCharms()">
+          <option value="front">Front</option>
+          <option value="back">Back</option>
+          <option value="north">North</option>
+          <option value="south">South</option>
+          <option value="west">West</option>
+          <option value="east">East</option>
+      </select>
+      <p>(Hold Ctrl or Cmd to select multiple charms)</p>
     </form>
 
     <div id="cardContainer">
@@ -112,6 +123,7 @@
       <div class="cardSection" id="cardType"></div>
       <div class="cardSection" id="cardCostBubble"></div>
       <div class="cardSection" id="cardCost"></div>
+      <div class="cardSection" id="cardCharmsContainer"></div>
       <div class="cardSection" id="cardStats">
         <div class="cardSection" id="cardStatsFloater">
           <span class="cardSection" id="cardPower">4</span>
@@ -375,11 +387,29 @@
 
       ]
       var text2 = text;
-      var numTimesToSubstitute = 5
+      var numTimesToSubstitute = 10
       for (let i = 0; i < numTimesToSubstitute; i++) {
         substituteList.forEach(x => text2=text2.replace(x[0], x[1]) );
       }
       return text2;
+    }
+
+    function updateCharms() {
+        const charmsContainer = document.getElementById('cardCharmsContainer');
+        const selectedCharms = Array.from(document.getElementById('charms').selectedOptions)
+                                   .map(option => option.value);
+
+        // Clear existing charms
+        charmsContainer.innerHTML = '';
+
+        // Limit charms to a maximum of 5
+        selectedCharms.slice(0, 5).forEach(charm => {
+            const charmImg = document.createElement('img');
+            charmImg.src = `images/charm-${charm}.png`;
+            charmImg.alt = charm;
+            charmImg.classList.add('cardCharm');
+            charmsContainer.appendChild(charmImg);
+        });
     }
 
     function hideRenderContainer(){
