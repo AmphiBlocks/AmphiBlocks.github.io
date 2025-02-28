@@ -61,12 +61,12 @@
         <option value="Champion-2">Level 2</option>
         <option value="Champion-3">Level 3</option>
         <option value="Memory">Memory</option>
-        <option value="Reserve">Reserve</option>        
+        <option selected value="Reserve">Reserve</option>        
       </select>
       <br>
 
       <label for="cost">Card Cost:</label>
-      <input type="number" id="cost" value="" name="cost" min="0" max="9" pattern="[0-9]" oninput="updateImage('cardCost', this.value, '')">
+      <input type="text" id="cost" value="X" name="cost" oninput="updateImage('cardCost', this.value, '')">
       <br><br>
 
       <label for="subtype">Card Type:</label>
