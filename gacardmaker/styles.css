@@ -136,16 +136,17 @@ body {
   z-index:1;
 }
 
-#cardElement {
+#cardElementSymbol {
   font-size: 18px;
   position: absolute;
-  top: 255px;
-  right: 16px;
+  top: 25px;
+  right: 22px;
   width: 58px;
-  height: 58px;
+  height: 106px;
   background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
+  background-position: contain;
+  background-size: top;
+  visibility: hidden;
   z-index:2;
 }
 

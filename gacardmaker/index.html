@@ -32,6 +32,7 @@
       <label for="element">Card Element:</label>
       <select id="element" name="element" onchange="
         updateImage('cardElementBackground', this.value, 'element-border-', true);
+        updateImage('cardElementSymbol', this.value, 'element-symbol-', true);
         updateImage('cardTypeBar', this.value, 'element-bar-', false, 'webp');
         updateImage('cardTypePoint', this.value, 'element-point-', false, 'webp');
       ">
@@ -115,7 +116,7 @@
       </div>
       <div class="cardSection" id="cardElementBackground"></div>
       <canvas id="combinedCanvas"></canvas>
-      <div class="cardSection" id="cardElement"></div>
+      <div class="cardSection" id="cardElementSymbol"></div>
       <div class="cardSection" id="cardTitle">Card Title</div>
       <div class="cardSection" id="cardTypeLine">
         <span class="cardSection" id="cardTypeText">Ally - Tamer Ranger Animal Human</span>
@@ -168,10 +169,10 @@
       </select>
       <br><br>
 
-      <label for="printing">Card Edition:</label>
+      <label for="edition">Card Edition:</label>
       <table border=0 width="100%"><tr>
-        <td>      <select id="printing" name="printing" onchange="
-        updatePrinting(this.value);
+        <td>      <select id="edition" name="edition" onchange="
+        updateEdition(this.value);
       ">
         <option value="Regular">Regular</option>
         <option disabled value="Extended">Extended</option>
@@ -427,13 +428,13 @@
       positionCardTypeText();
     }
 
-    function updateImage(sectionId, value, format, respectprinting = false, imagetype = "png") {
-        const suffix = (respectprinting && document.getElementById('printing').value === 'CSR') ? '-csr' : '';
+    function updateImage(sectionId, value, format, respectedition = false, imagetype = "png") {
+        const suffix = (respectedition && document.getElementById('edition').value === 'CSR') ? '-csr' : '';
         document.getElementById(sectionId).style.backgroundImage = `url('${baseURL()}images/${format.toLowerCase()}${value.toLowerCase()}${suffix}.${imagetype}')`;
         hideRenderContainer();
     }
 
-    function updatePrinting(mode) {
+    function updateEdition(mode) {
         const styles = {
             whiteGlow: `
                 text-shadow: 0 0 5px rgba(255, 255, 255, 1), 
@@ -535,7 +536,7 @@
     }
 
     function updateElementClipping() {
-        const mode = document.getElementById('printing').value;
+        const mode = document.getElementById('edition').value;
         const cardTypeBar = document.getElementById('cardTypeBar');
         const cardTypePoint = document.getElementById('cardTypePoint');
         const cardElementBackground = document.getElementById('cardElementBackground');
@@ -779,6 +780,7 @@
 
     window.onload = function () {
       updateImage('cardElementBackground', document.getElementById('element').value, 'element-border-', true);
+      updateImage('cardElementSymbol', document.getElementById('element').value, 'element-symbol-', true);
       updateImage('cardType', document.getElementById('subtype').value, 'card-type-');
       updateImage('cardCostBubble', document.getElementById('costbubble').value, 'cost-');
      
@@ -828,7 +830,7 @@
         const urlParams = new URLSearchParams(window.location.search);
         const fields = [
             'artURL', 'artPosition', 'title', 'element', 'cost', 'costbubble', 'subtype', 'typedesc',
-            'effect', 'power', 'life', 'durability', 'speed', 'printing',
+            'effect', 'power', 'life', 'durability', 'speed', 'edition',
             'setrarity', 'copyright'
         ];
 
@@ -852,7 +854,7 @@
         const renderButton = document.querySelector('button[onclick="render()"]');
         const fields = [
             'artURL', 'artPosition', 'title', 'element', 'cost', 'costbubble', 'subtype', 'typedesc',
-            'effect', 'power', 'life', 'durability', 'speed', 'printing',
+            'effect', 'power', 'life', 'durability', 'speed', 'edition',
             'setrarity', 'copyright'
         ];
 
