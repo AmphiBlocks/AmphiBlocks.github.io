@@ -54,14 +54,16 @@
 
       <br><br>
 
-      <label for="costbubble">Card Cost Type:</label>
+      <label for="costbubble">Card Cost Bubble Type:</label>
       <select id="costbubble" name="costbubble" onchange="updateImage('cardCostBubble', this.value, 'cost-')">
         <option value="Champion-0">Level 0</option>
         <option value="Champion-1">Level 1</option>
         <option value="Champion-2">Level 2</option>
         <option value="Champion-3">Level 3</option>
         <option value="Memory">Memory</option>
-        <option selected value="Reserve">Reserve</option>        
+        <option value="Memory-Back">Memory-Back</option>
+        <option selected value="Reserve">Reserve</option>
+        <option value="Reserve-Back">Reserve-Back</option>
       </select>
       <br>
 
@@ -95,7 +97,7 @@
 {bold}{center}Floating Memory{/center}{/bold}
       </textarea>
 
-      <label for="charms">Charms:</label>
+      <label for="charms">Card Charms:</label>
       <select id="charms" name="charms" multiple onchange="updateCharms()">
           <option value="front">Front</option>
           <option value="back">Back</option>
@@ -166,7 +168,7 @@
       </select>
       <br><br>
 
-      <label for="printing">Card Printing:</label>
+      <label for="printing">Card Edition:</label>
       <table border=0 width="100%"><tr>
         <td>      <select id="printing" name="printing" onchange="
         updatePrinting(this.value);
@@ -186,8 +188,8 @@
       <textarea id="setrarity" name="setrarity" oninput="updateText('cardSetRarity', this.value)">CUS {dot} EN - 001 {ultra rare} {dot} illust: Bing Chilling</textarea>
       <br>
 
-      <label for="copyright">Copyright:</label>
-      <textarea id="copyright" name="copyright" oninput="updateText('cardCopyright', this.value)">©2024 Crux is Fine</textarea>
+      <label for="copyright">Card Copyright:</label>
+      <textarea id="copyright" name="copyright" oninput="updateText('cardCopyright', this.value)">©2025 Crux is Fine</textarea>
       <br>
 
       <label id="renderWarning" style="visibility:visible"> Rendering temporarily disabled, take a screenshot instead. </label>
