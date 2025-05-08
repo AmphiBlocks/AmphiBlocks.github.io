@@ -97,7 +97,32 @@
       {break 10 high}
 {bold}{center}Floating Memory{/center}{/bold}
       </textarea>
-
+      <div id="macroButtons">
+        <!-- Wrapping macros -->
+        <button type="button" title="Wrap in bold" onclick="wrapMacro('{bold}', '{/bold}')">Bold</button>
+        <button type="button" title="Wrap in italic" onclick="wrapMacro('{italic}', '{/italic}')">Italic</button>
+        <button type="button" title="Wrap in center tag" onclick="wrapMacro('{center}', '{/center}')">Center</button>
+        <!-- Special syntax insertions -->
+        <button type="button" title="Insert line break with spacing" onclick="insertMacro('{break 10 high}', 'effect')">Line Break</button><button type="button" title="Wrap in font size span" onclick="wrapMacro('{font-size 19 px}', '{/font-size}')">Font Size</button>
+        <button type="button" title="Wrap in line height span" onclick="wrapMacro('{line-height 130%}', '{/line-height}')">Line Height</button>
+       </div>
+       <div id="macroButtons">  
+        <!-- Inserting macros -->
+        <button type="button" title="Wrap in bonus styling" onclick="wrapMacro('{bonus}', '{/bonus}')"><span class="effect__icon">Class Bonus</span></button>
+        <button type="button" title="Wrap in cost styling" onclick="wrapMacro('{cost}', '{/cost}')"><span class="cost__icon">1</span></button>        
+        <button type="button" title="Insert tap icon" onclick="insertMacro('{tap}', 'effect')">
+          <img src="images/inline-tap.png" style="height: 16px;">
+        </button>
+        <button type="button" title="Insert sword icon" onclick="insertMacro('{sword}', 'effect')">
+          <img src="images/inline-sword.png" style="height: 16px;">
+        </button>
+        <button type="button" title="Insert heart icon" onclick="insertMacro('{heart}', 'effect')">
+          <img src="images/inline-heart.png" style="height: 16px;">
+        </button>
+        <button type="button" title="Insert colon icon" onclick="insertMacro('{colon}', 'effect')">
+          <img src="images/inline-colon.png" style="height: 16px;">
+        </button>        
+      </div>
       <label for="charms">Card Charms:</label>
       <select id="charms" name="charms" multiple onchange="updateCharms()">
           <option value="front">Front</option>
@@ -187,6 +212,39 @@
 
       <label for="setrarity">Card Set/Rarity:</label>
       <textarea id="setrarity" name="setrarity" oninput="updateText('cardSetRarity', this.value)">CUS {dot} EN - 001 {ultra rare} {dot} illust: Bing Chilling</textarea>
+       <div id="macroButtons">  
+        <!-- Inserting macros -->
+        <button type="button" title="Common" onclick="insertMacro('{common}', 'setrarity')">
+          C
+        </button>
+        <button type="button" title="Uncommon" onclick="insertMacro('{uncommon}', 'setrarity')">
+          U
+        </button>
+        <button type="button" title="Rare" onclick="insertMacro('{rare}', 'setrarity')">
+          R
+        </button>
+        <button type="button" title="Super Rare" onclick="insertMacro('{super rare}', 'setrarity')">
+          SR
+        </button>
+        <button type="button" title="Ultra Rare" onclick="insertMacro('{ultra rare}', 'setrarity')">
+          UR
+        </button>
+        <button type="button" title="Collector Super Rare" onclick="insertMacro('{collector super rare}', 'setrarity')">
+          CSR
+        </button>
+        <button type="button" title="Collector Ultra Rare" onclick="insertMacro('{collector ultra rare}', 'setrarity')">
+          CUR
+        </button>
+        <button type="button" title="Promotional Rare" onclick="insertMacro('{promotional rare}', 'setrarity')">
+          PR
+        </button>
+        <button type="button" title="Collector Promotional Rare" onclick="insertMacro('{collector promotional rare}', 'setrarity')">
+          CPR
+        </button>     
+        <button type="button" title="Insert dot icon" onclick="insertMacro('{dot}', 'setrarity')">
+          dot
+        </button>
+      </div>       
       <br>
 
       <label for="copyright">Card Copyright:</label>
@@ -356,13 +414,35 @@
       return "";
     }
 
+    function wrapMacro(prefix, suffix) {
+      const textarea = document.getElementById('effect');
+      const start = textarea.selectionStart;
+      const end = textarea.selectionEnd;
+      const selected = textarea.value.substring(start, end);
+      const before = textarea.value.substring(0, start);
+      const after = textarea.value.substring(end);
+      textarea.value = before + prefix + selected + suffix + after;
+      textarea.focus();
+      textarea.setSelectionRange(start + prefix.length, end + prefix.length);
+      textarea.dispatchEvent(new Event('input'));
+    }
+
+    function insertMacro(snippet, elementname) {
+      const textarea = document.getElementById('elementname');
+      const start = textarea.selectionStart;
+      const end = textarea.selectionEnd;
+      const before = textarea.value.substring(0, start);
+      const after = textarea.value.substring(end);
+      textarea.value = before + snippet + after;
+      textarea.focus();
+      const cursor = start + snippet.length;
+      textarea.setSelectionRange(cursor, cursor);
+      textarea.dispatchEvent(new Event('input'));
+    }
+
     function substituteTextForImages(text) {
 
       var substituteList = [
-        ["{tap}",  "<img src='"+baseURL()+"images/inline-tap.png'>"],
-        ["{colon}",  "<img src='"+baseURL()+"images/inline-colon.png'>"],
-        ["{sword}","<img src='"+baseURL()+"images/inline-sword.png'>"],
-        ["{heart}","<img src='"+baseURL()+"images/inline-heart.png'>"],
         ["{common}","<img src='"+baseURL()+"images/common.png'>"],
         ["{uncommon}","<img src='"+baseURL()+"images/uncommon.png'>"],
         ["{rare}","<img src='"+baseURL()+"images/rare.png'>"],
@@ -372,6 +452,10 @@
         ["{collector ultra rare}","<img src='"+baseURL()+"images/collector ultra rare.png'>"],
         ["{promotional rare}","<img src='"+baseURL()+"images/promotional rare.png'>"],
         ["{collector promotional rare}","<img src='"+baseURL()+"images/collector promotional rare.png'>"],
+        ["{tap}",  "<img src='"+baseURL()+"images/inline-tap.png'>"],
+        ["{colon}",  "<img src='"+baseURL()+"images/inline-colon.png'>"],
+        ["{sword}","<img src='"+baseURL()+"images/inline-sword.png'>"],
+        ["{heart}","<img src='"+baseURL()+"images/inline-heart.png'>"],
         ["{dot}","<img src='"+baseURL()+"images/dot.png'>"],
         ["{bonus}","<span class=\"effect__icon\">"],
         ["{/bonus}","</span>"],

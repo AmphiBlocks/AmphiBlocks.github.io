@@ -38,6 +38,36 @@ body {
   height: 70vh;
 }
 
+#cardForm label {
+  display: block;
+}
+
+#cardForm input, #cardForm select, #cardForm textarea, #cardForm .pseudoButton {
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+#cardForm textarea {
+  height: 140px;
+}
+
+#cardForm button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+   width: 100%;
+}
+
+#cardForm button:hover {
+  background-color: #45a049;
+}
+
 #cardContainer {
   width: 500px;
   min-width: 500px;
@@ -329,6 +359,26 @@ body {
   padding: 2px 0px 0px 20px;
 }
 
+#macroButtons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 8px;
+}
+
+#macroButtons button {
+  display: inline-block;    /* Ensure buttons don't span full width */
+  width: auto !important;   /* Override any inherited 100% width */
+  flex: 0 0 auto;           
+  padding: 4px 10px;
+  font-size: 12px;
+  cursor: pointer;
+  white-space: nowrap;
+  background-color:grey;
+  border-color:black;
+  border-width: 1px;
+}
+
 #cardEffect {
   display: inline-block;
   vertical-align: middle;
@@ -411,36 +461,6 @@ body {
 
   font-family: 'CardText', 'Linux Biolinum O', sans-serif;      
   z-index:2;
-}
-
-#cardForm label {
-  display: block;
-}
-
-#cardForm input, #cardForm select, #cardForm textarea, #cardForm .pseudoButton {
-  width: 100%;
-  padding: 8px;
-  box-sizing: border-box;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-#cardForm textarea {
-  height: 140px;
-}
-
-#cardForm button {
-  background-color: #4CAF50;
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-   width: 100%;
-}
-
-#cardForm button:hover {
-  background-color: #45a049;
 }
 
 
