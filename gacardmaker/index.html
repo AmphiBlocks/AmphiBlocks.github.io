@@ -32,7 +32,7 @@
       <label for="element">Card Element:</label>
       <select id="element" name="element" onchange="
         updateImage('cardElementBackground', this.value, 'element-border-', true);
-        updateImage('cardElementSymbol', this.value, 'element-symbol-', true);
+        updateImage('cardElementSymbol', this.value, 'element-symbol-', false);
         updateImage('cardTypeBar', this.value, 'element-bar-', false, 'webp');
         updateImage('cardTypePoint', this.value, 'element-point-', false, 'webp');
       ">
@@ -517,7 +517,7 @@
     }
 
     function updateImage(sectionId, value, format, respectedition = false, imagetype = "png") {
-        const suffix = (respectedition && document.getElementById('edition').value === 'CSR') ? '-csr' : '';
+        const suffix = (respectedition && document.getElementById('edition').value === 'CSR') ? '-CSR' : '';
         document.getElementById(sectionId).style.backgroundImage = `url('${baseURL()}images/${format.toLowerCase()}${value.toLowerCase()}${suffix}.${imagetype}')`;
         hideRenderContainer();
     }
