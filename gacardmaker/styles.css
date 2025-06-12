@@ -383,6 +383,7 @@ body {
   display: inline-block;
   vertical-align: middle;
   line-height: 20px;
+  wdith:420px;
   z-index:3;
 }
 
@@ -428,7 +429,7 @@ body {
   position: absolute;
   bottom: 16px;
   left: 21px;
-  width: 200px;
+  width: 455px;
   height: 16px;
   background-repeat: no-repeat;
   background-position: bottom left;
@@ -449,7 +450,7 @@ body {
   position: absolute;
   bottom: 15px;
   right: 21px;
-  width: 200px;
+  width: 455px;
   height: 16px;
   background-repeat: no-repeat;
   background-position: bottom right;
