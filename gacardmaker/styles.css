@@ -288,6 +288,18 @@ body {
   z-index:2;
 }
 
+#cardEffectContainer b,
+#cardEffectContainer strong {
+  font-family: 'CardTextBold', 'CardText', 'Linux Biolinum O', sans-serif;
+  font-weight: normal;
+}
+
+#cardEffectContainer i,
+#cardEffectContainer em {
+  font-family: 'CardTextItalic', 'CardText', 'Linux Biolinum O', sans-serif;
+  font-style: normal; /* override native italic to use actual italic font */
+}
+
 #cardType {
   position: absolute;
   top: 463px;
