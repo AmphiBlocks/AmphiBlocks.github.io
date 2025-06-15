@@ -7,97 +7,125 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <div id="theme-switcher-container">
+    <label for="theme-switcher">Theme:</label>
+    <select id="theme-switcher">
+      <option value="theme-light">Light</option>
+      <option value="theme-dark">Dark</option>
+      <option value="theme-norm">Norm</option>
+      <option value="theme-water">Water</option>
+      <option value="theme-wind">Wind</option>
+      <option value="theme-fire">Fire</option>
+      <option value="theme-tera">Tera</option>
+      <option value="theme-luxem">Luxem</option>
+      <option value="theme-arcane">Arcane</option>
+      <option value="theme-exia">Exia</option>
+      <option value="theme-neos">Neos</option>
+      <option value="theme-umbra">Umbra</option>
+      <option value="theme-crux">Crux</option>
+    </select>
+  </div>
 
   <h1 id="header">Grand Archive Custom Card Imaginer</h1>
   <div id="content">
 
     <form id="cardForm">
-      <table border=0 width="100%"><tr>
-        <td><label for="artupload">Card Art:</label></td>
-        <td align="right"><label>(Resize and Drag to fit)</label></td>
-      </tr></table>
-      <table border=0 width="100%"><tr>
-        <td><input type="file" id="artupload" name="artupload" accept="image/*"/></td>
-        <td><label class="pseudoButton" onclick="growArt()">+</label></td>
-        <td><label class="pseudoButton" onclick="shrinkArt()">-</label></td>
-      </tr></table></span>
-      <input id="artURL" value="Paste URL to image" onfocus="this.value=''" oninput="updateArtByURL(this.value)">
-      <input id="artPosition" value="top:0px;left:0px;width:700px;height:500px;" oninput="updateArtPosition(this.value)">
-      <br><br>
+      <div class="accordion-section">
+        <button type="button" class="accordion-toggle" onclick="toggleAccordion(this)"><span class="accordion-arrow">▼</span> Card Art</button>
+        <div class="accordion-content" style="display: none;">
+          <table border=0 width="100%"><tr>
+            <td><label for="artupload">Card Art:</label></td>
+            <td align="right"><label>(Resize and Drag to fit)</label></td>
+          </tr></table>
+          <table border=0 width="100%"><tr>
+            <td><input type="file" id="artupload" name="artupload" accept="image/*"/></td>
+            <td><label class="pseudoButton" onclick="growArt()"><span class="pseudoButtonText">+</span></label></td>
+            <td><label class="pseudoButton" onclick="shrinkArt()"><span class="pseudoButtonText">-</span></label></td>
+          </tr></table>
+          <input id="artURL" value="Paste URL to image" onfocus="this.value=''" oninput="updateArtByURL(this.value)">
+          <input id="artPosition" value="top:0px;left:0px;width:700px;height:500px;" oninput="updateArtPosition(this.value)">
+        </div>
+      </div>
 
-      <label for="title">Card Title:</label>
-      <input type="text" id="title" name="title" oninput="updateText('cardTitle', this.value)" value="Card Title">
-      <br><br>
+      <div class="accordion-section">
+        <button type="button" class="accordion-toggle" onclick="toggleAccordion(this)"><span class="accordion-arrow">▼</span> Basic Info</button>
+        <div class="accordion-content" style="display: block;">
+          <label for="title">Title:</label>
+          <input type="text" id="title" name="title" oninput="updateText('cardTitle', this.value)" value="Card Title">
 
-      <label for="element">Card Element:</label>
-      <select id="element" name="element" onchange="
-        updateImage('cardElementBackground', this.value, 'element-border-', true);
-        updateImage('cardElementSymbol', this.value, 'element-symbol-', false);
-        updateImage('cardTypeBar', this.value, 'element-bar-', false, 'webp');
-        updateImage('cardTypePoint', this.value, 'element-point-', false, 'webp');
-      ">
-        <option value="Norm">Norm</option>
-        <option value="Fire">Fire</option>
-        <option value="Water">Water</option>
-        <option value="Wind">Wind</option>
-        <option value="Arcane">Arcane</option>
-        <option value="Astra">Astra</option>
-        <option value="Crux">Crux</option>
-		    <option value="Earth">Earth</option>
-        <option value="Exia">Exia</option>
-        <option value="Luxem">Luxem</option>
-        <option value="Neos">Neos</option>
-        <option disabled value="Techa">Techa</option>
-        <option value="Tera">Tera</option>
-        <option value="Umbra">Umbra</option>
-        <option disabled value="Wrath">Wrath</option>
-      </select>
+          <label for="element">Element:</label>
+          <select id="element" name="element" onchange="
+            updateImage('cardElementBackground', this.value, 'element-border-', true);
+            updateImage('cardElementSymbol', this.value, 'element-symbol-', false);
+            updateImage('cardTypeBar', this.value, 'element-bar-', false, 'webp');
+            updateImage('cardTypePoint', this.value, 'element-point-', false, 'webp');
+          ">
+            <option value="Norm">Norm</option>
+            <option value="Fire">Fire</option>
+            <option value="Water">Water</option>
+            <option value="Wind">Wind</option>
+            <option value="Arcane">Arcane</option>
+            <option value="Astra">Astra</option>
+            <option value="Crux">Crux</option>
+            <option value="Earth">Earth</option>
+            <option value="Exia">Exia</option>
+            <option value="Luxem">Luxem</option>
+            <option value="Neos">Neos</option>
+            <option disabled value="Techa">Techa</option>
+            <option value="Tera">Tera</option>
+            <option value="Umbra">Umbra</option>
+            <option disabled value="Wrath">Wrath</option>
+          </select>
 
-      <br><br>
+          <div class="card-form-cost-row" style="display: flex; gap: 10px; align-items: flex-end;">
+            <div style="flex:1; min-width: 120px;">
+              <label for="costbubble">Cost Bubble:</label>
+              <select id="costbubble" name="costbubble" onchange="updateImage('cardCostBubble', this.value, 'cost-')">
+                <option value="Champion-0">Level 0</option>
+                <option value="Champion-1">Level 1</option>
+                <option value="Champion-2">Level 2</option>
+                <option value="Champion-3">Level 3</option>
+                <option value="Memory">Memory</option>
+                <option value="Memory-Back">Memory-Back</option>
+                <option selected value="Reserve">Reserve</option>
+                <option value="Reserve-Back">Reserve-Back</option>
+              </select>
+            </div>
+            <div style="flex:1; min-width: 80px;">
+              <label for="cost">Cost:</label>
+              <input type="text" id="cost" value="X" name="cost" oninput="updateImage('cardCost', this.value, 'cost-')">
+            </div>
+          </div>
+        </div>
+      </div>
 
-      <label for="costbubble">Card Cost Bubble Type:</label>
-      <select id="costbubble" name="costbubble" onchange="updateImage('cardCostBubble', this.value, 'cost-')">
-        <option value="Champion-0">Level 0</option>
-        <option value="Champion-1">Level 1</option>
-        <option value="Champion-2">Level 2</option>
-        <option value="Champion-3">Level 3</option>
-        <option value="Memory">Memory</option>
-        <option value="Memory-Back">Memory-Back</option>
-        <option selected value="Reserve">Reserve</option>
-        <option value="Reserve-Back">Reserve-Back</option>
-      </select>
-      <br>
+      <div class="accordion-section">
+        <button type="button" class="accordion-toggle" onclick="toggleAccordion(this)"><span class="accordion-arrow">▼</span> Type & Effect</button>
+        <div class="accordion-content" style="display: block;">
+          <label for="subtype">Type:</label>
+          <select id="subtype" name="subtype" onchange="updateImage('cardType', this.value, 'card-type-')">
+            <option value="Ally">Ally</option>
+            <option value="Action">Action</option>
+            <option value="Champion">Champion</option>
+            <option value="Domain">Domain</option>
+            <option value="Item">Item</option>
+            <option value="Phantasia">Phantasia</option>      
+            <option value="Regalia">Regalia</option>      
+            <option value="Weapon">Weapon</option>
+            <option value="Skill">Skill</option>
+          </select>
 
-      <label for="cost">Card Cost:</label>
-      <input type="text" id="cost" value="X" name="cost" oninput="updateImage('cardCost', this.value, 'cost-')">
-      <br><br>
+          <label for="typedesc">Type Desc:</label>
+          <input type="text" id="typedesc" name="typedesc" oninput="updateText('cardTypeText', this.value)" value="Ally - Tamer Ranger Animal Human">
 
-      <label for="subtype">Card Type:</label>
-      <select id="subtype" name="subtype" onchange="updateImage('cardType', this.value, 'card-type-')">
-        <option value="Ally">Ally</option>
-        <option value="Action">Action</option>
-        <option value="Champion">Champion</option>
-        <option value="Domain">Domain</option>
-        <option value="Item">Item</option>
-        <option value="Phantasia">Phantasia</option>      
-        <option value="Regalia">Regalia</option>      
-        <option value="Weapon">Weapon</option>
-        <option value="Skill">Skill</option>
-      </select>
-      <br>
-
-      <label for="typedesc">Card Type Desc:</label>
-      <input type="text" id="typedesc" name="typedesc" oninput="updateText('cardTypeText', this.value)" value="Ally - Tamer Ranger Animal Human">
-      <br><br>
-
-      <label for="effect">Card Effect:</label><br>
-      <textarea id="effect" name="effect" value="Card Effect" oninput="updateText('cardEffect', this.value)">{bonus}Class Bonus{/bonus} +1{sword}       {font-size 19 px}{italic}(Apply this ability only if your champion's class matches the card's class.){/italic}{/font-size}
+          <label for="effect">Effect:</label>
+          <textarea id="effect" name="effect" value="Card Effect" oninput="updateText('cardEffect', this.value)">{bonus}Class Bonus{/bonus} +1{sword}       {font-size 19 px}{italic}(Apply this ability only if your champion's class matches the card's class.){/italic}{/font-size}
       {break 10 high}
 {cost}1{/cost},{tap}{colon} this card gains +1{heart} until end of turn
       {break 10 high}
 {bold}{center}Floating Memory{/center}{/bold}
-      </textarea>
-      <div id="macroButtons">
+</textarea>
+<div id="macroButtons">
         <!-- Wrapping macros -->
         <button type="button" title="Wrap in bold" onclick="wrapMacro('{bold}', '{/bold}', 'effect')">Bold</button>
         <button type="button" title="Wrap in italic" onclick="wrapMacro('{italic}', '{/italic}', 'effect')">Italic</button>
@@ -123,16 +151,25 @@
           <img src="images/inline-colon.png" style="height: 16px;">
         </button>        
       </div>
-      <label for="charms">Card Charms:</label>
-      <select id="charms" name="charms" multiple onchange="updateCharms()">
-          <option value="front">Front</option>
-          <option value="back">Back</option>
-          <option value="north">North</option>
-          <option value="south">South</option>
-          <option value="west">West</option>
-          <option value="east">East</option>
-      </select>
-      <p>(Hold Ctrl or Cmd to select multiple charms)</p>
+        </div>
+      </div>
+
+      <div class="accordion-section">
+        <button type="button" class="accordion-toggle" onclick="toggleAccordion(this)"><span class="accordion-arrow">▼</span> Charms</button>
+        <div class="accordion-content" style="display: none;">
+          <label for="charms">Charms:</label>
+          <select id="charms" name="charms" multiple onchange="updateCharms()">
+            <option value="front">Front</option>
+            <option value="back">Back</option>
+            <option value="north">North</option>
+            <option value="south">South</option>
+            <option value="west">West</option>
+            <option value="east">East</option>
+          </select>
+          <p>(Hold Ctrl or Cmd to select multiple charms)</p>
+        </div>
+      </div>
+
     </form>
 
     <div id="cardContainer">
@@ -174,82 +211,94 @@
 
     <form id="cardForm">
 
-      <label for="power">Card Power:</label>
-      <input type="number" id="power" name="power" min="0" max="99" pattern="[0-9]" oninput="updateStats('cardPower', this.value, 'stat-power')">
-      <br>
+      <div class="accordion-section">
+        <button type="button" class="accordion-toggle" onclick="toggleAccordion(this)"><span class="accordion-arrow">▼</span> Stats & Speed</button>
+        <div class="accordion-content" style="display: block;">
+          <div class="card-form-stats-row">
+            <div class="stat-group">
+              <label for="power">Power:</label>
+              <input type="number" id="power" name="power" min="0" max="99" pattern="[0-9]" oninput="updateStats('cardPower', this.value, 'stat-power')">
+              <button type="button" class="clear-btn" onclick="document.getElementById('power').value=''; updateStats('cardPower', '', 'stat-power');">Clear</button>
+            </div>
+            <div class="stat-group">
+              <label for="life">Life:</label>
+              <input type="number" id="life" name="life" min="0" max="99" pattern="[0-9]" oninput="updateStats('cardLife', this.value, 'stat-life')">
+              <button type="button" class="clear-btn" onclick="document.getElementById('life').value=''; updateStats('cardLife', '', 'stat-life');">Clear</button>
+            </div>
+            <div class="stat-group">
+              <label for="durability">Durability:</label>
+              <input type="number" id="durability" name="durability" min="0" max="99" pattern="[0-9]" oninput="updateStats('cardDurability', this.value, 'stat-durability')">
+              <button type="button" class="clear-btn" onclick="document.getElementById('durability').value=''; updateStats('cardDurability', '', 'stat-durability');">Clear</button>
+            </div>
+          </div>
+          <label for="speed">Speed:</label>
+          <select id="speed" name="speed" onchange="updateImage('cardSpeed', this.value, 'speed-')">
+            <option value="None">None</option>
+            <option value="Fast">Fast</option>
+            <option value="Slow">Slow</option>
+          </select>
+        </div>
+      </div>
 
-      <label for="life">Card Life:</label>
-      <input type="number" id="life" name="life" min="0" max="99" pattern="[0-9]" oninput="updateStats('cardLife', this.value, 'stat-life')">
-      <br>
+      <div class="accordion-section">
+        <button type="button" class="accordion-toggle" onclick="toggleAccordion(this)"><span class="accordion-arrow">▼</span> Edition, Set/Rarity & Copyright</button>
+        <div class="accordion-content" style="display: none;">
+          <label for="edition">Edition:</label>
+          <select id="edition" name="edition" onchange="updateEdition(this.value);">
+            <option value="Regular">Regular</option>
+            <option disabled value="Extended">Extended</option>
+            <option value="CSR">CSR</option>
+          </select>
+          <br>
+          <label id="csrEraser" class="pseudoButton" onclick="toggleEraserMode()"><span class="pseudoButtonText">CSR-style Background Eraser</span></label>
+          <table border=0 width="100%"><tr>
+            <td><label>Brush Size</label></td><td><input id="eraserSize" type="number" value="20" style="width:75px"></td>
+            <td><label id="revertEraser" class="pseudoButton" onclick="revertEraser()"><span class="pseudoButtonText">Revert</span></label></td>
+          </tr></table>
 
-      <label for="durability">Card Durability:</label>
-      <input type="number" id="durability" name="durability" min="0" max="99" pattern="[0-9]" oninput="updateStats('cardDurability', this.value, 'stat-durability')">
-      <br><br>
+          <br>
 
-      <label for="speed">Card Speed:</label>
-      <select id="speed" name="speed" onchange="updateImage('cardSpeed', this.value, 'speed-')">
-        <option value="None">None</option>
-        <option value="Fast">Fast</option>
-        <option value="Slow">Slow</option>
-      </select>
-      <br><br>
+          <label for="setrarity">Set/Rarity:</label>
+          <textarea id="setrarity" name="setrarity" oninput="updateText('cardSetRarity', this.value)">CUS {dot} EN - 001 {ultra rare} {dot} illust: Bing Chilling</textarea>
+           <div id="macroButtons">  
+            <!-- Inserting macros -->
+            <button type="button" title="Common" onclick="insertMacro('{common}', 'setrarity')">
+              C
+            </button>
+            <button type="button" title="Uncommon" onclick="insertMacro('{uncommon}', 'setrarity')">
+              U
+            </button>
+            <button type="button" title="Rare" onclick="insertMacro('{rare}', 'setrarity')">
+              R
+            </button>
+            <button type="button" title="Super Rare" onclick="insertMacro('{super rare}', 'setrarity')">
+              SR
+            </button>
+            <button type="button" title="Ultra Rare" onclick="insertMacro('{ultra rare}', 'setrarity')">
+              UR
+            </button>
+            <button type="button" title="Collector Super Rare" onclick="insertMacro('{collector super rare}', 'setrarity')">
+              CSR
+            </button>
+            <button type="button" title="Collector Ultra Rare" onclick="insertMacro('{collector ultra rare}', 'setrarity')">
+              CUR
+            </button>
+            <button type="button" title="Promotional Rare" onclick="insertMacro('{promotional rare}', 'setrarity')">
+              PR
+            </button>
+            <button type="button" title="Collector Promotional Rare" onclick="insertMacro('{collector promotional rare}', 'setrarity')">
+              CPR
+            </button>     
+            <button type="button" title="Insert dot icon" onclick="insertMacro('{dot}', 'setrarity')">
+              dot
+            </button>
+          </div>       
+          <br>
 
-      <label for="edition">Card Edition:</label>
-      <table border=0 width="100%"><tr>
-        <td>      <select id="edition" name="edition" onchange="
-        updateEdition(this.value);
-      ">
-        <option value="Regular">Regular</option>
-        <option disabled value="Extended">Extended</option>
-        <option value="CSR">CSR</option>
-      </select></td>
-        <td><label id="csrEraser" class="pseudoButton" onclick="toggleEraserMode()">CSR-style Background Eraser</label></td>
-        <td><label>Brush Size</label></td><td><input id="eraserSize" type="number" value="20" style="width:50px"></td>
-        <td><label id="revertEraser" class="pseudoButton" onclick="revertEraser()">Revert</label></td>
-      </tr></table>      
-
-      <br>
-
-      <label for="setrarity">Card Set/Rarity:</label>
-      <textarea id="setrarity" name="setrarity" oninput="updateText('cardSetRarity', this.value)">CUS {dot} EN - 001 {ultra rare} {dot} illust: Bing Chilling</textarea>
-       <div id="macroButtons">  
-        <!-- Inserting macros -->
-        <button type="button" title="Common" onclick="insertMacro('{common}', 'setrarity')">
-          C
-        </button>
-        <button type="button" title="Uncommon" onclick="insertMacro('{uncommon}', 'setrarity')">
-          U
-        </button>
-        <button type="button" title="Rare" onclick="insertMacro('{rare}', 'setrarity')">
-          R
-        </button>
-        <button type="button" title="Super Rare" onclick="insertMacro('{super rare}', 'setrarity')">
-          SR
-        </button>
-        <button type="button" title="Ultra Rare" onclick="insertMacro('{ultra rare}', 'setrarity')">
-          UR
-        </button>
-        <button type="button" title="Collector Super Rare" onclick="insertMacro('{collector super rare}', 'setrarity')">
-          CSR
-        </button>
-        <button type="button" title="Collector Ultra Rare" onclick="insertMacro('{collector ultra rare}', 'setrarity')">
-          CUR
-        </button>
-        <button type="button" title="Promotional Rare" onclick="insertMacro('{promotional rare}', 'setrarity')">
-          PR
-        </button>
-        <button type="button" title="Collector Promotional Rare" onclick="insertMacro('{collector promotional rare}', 'setrarity')">
-          CPR
-        </button>     
-        <button type="button" title="Insert dot icon" onclick="insertMacro('{dot}', 'setrarity')">
-          dot
-        </button>
-      </div>       
-      <br>
-
-      <label for="copyright">Card Copyright:</label>
-      <textarea id="copyright" name="copyright" oninput="updateText('cardCopyright', this.value)">©2025 Crux is Fine</textarea>
-      <br>
+          <label for="copyright">Copyright:</label>
+          <textarea id="copyright" name="copyright" oninput="updateText('cardCopyright', this.value)">©2025 Crux is Fine</textarea>
+        </div>
+      </div>
 
       <label id="renderWarning" style="visibility:visible"> Rendering temporarily disabled, take a screenshot instead. </label>
       <button id="renderButton" type="button" onclick="render()">Generate Share URL</button>
@@ -980,6 +1029,41 @@
         }).catch(err => {
             console.error('Failed to copy text: ', err);
         });
+    });
+
+    function toggleAccordion(btn) {
+      const content = btn.nextElementSibling;
+      const arrow = btn.querySelector('.accordion-arrow');
+      if (content.style.display === 'none' || content.style.display === '') {
+        content.style.display = 'block';
+        if (arrow) arrow.textContent = '▲';
+      } else {
+        content.style.display = 'none';
+        if (arrow) arrow.textContent = '▼';
+      }
+    }
+
+    // On page load, set correct arrow for open accordions
+    window.addEventListener('DOMContentLoaded', function() {
+      document.querySelectorAll('.accordion-toggle').forEach(btn => {
+        const content = btn.nextElementSibling;
+        const arrow = btn.querySelector('.accordion-arrow');
+        if (content && arrow) {
+          arrow.textContent = (content.style.display === 'block') ? '▲' : '▼';
+        }
+      });
+    });
+
+    document.getElementById('theme-switcher').addEventListener('change', function() {
+      document.body.classList.remove(
+        'theme-light', 'theme-dark', 'theme-norm', 'theme-water', 'theme-wind', 'theme-fire', 'theme-tera', 'theme-luxem', 'theme-arcane', 'theme-exia', 'theme-neos', 'theme-umbra', 'theme-crux'
+      );
+      document.body.classList.add(this.value);
+    });
+
+    // Set default theme
+    window.addEventListener('DOMContentLoaded', function() {
+      document.body.classList.add('theme-light');
     });
 
   </script>
