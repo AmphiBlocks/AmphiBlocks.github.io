@@ -416,9 +416,9 @@ body.theme-dark {
   height:30px;
 
   font-size: 18px;
-  font-family: 'CardText', 'Linux Biolinum O', sans-serif;
+  font-family: 'CardTextBold', 'Linux Biolinum O', sans-serif;
   letter-spacing: -0.5px;
-  font-weight:bold;
+  font-weight:normal;
 
 }
 
