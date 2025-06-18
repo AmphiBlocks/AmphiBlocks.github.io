@@ -103,16 +103,20 @@
         <button type="button" class="accordion-toggle" onclick="toggleAccordion(this)"><span class="accordion-arrow">▼</span> Type & Effect</button>
         <div class="accordion-content" style="display: block;">
           <label for="subtype">Type:</label>
-          <select id="subtype" name="subtype" onchange="updateImage('cardType', this.value, 'card-type-')">
-            <option value="Ally">Ally</option>
+          <select id="subtype" name="subtype" onchange="updateImage('cardTypeIcon', this.value, 'card-type-icon-')">
             <option value="Action">Action</option>
+            <option value="Ally" selected>Ally</option>
+            <option value="Attack">Attack</option>
             <option value="Champion">Champion</option>
             <option value="Domain">Domain</option>
             <option value="Item">Item</option>
+            <option value="Mastery">Mastery</option>
             <option value="Phantasia">Phantasia</option>      
-            <option value="Regalia">Regalia</option>      
             <option value="Weapon">Weapon</option>
-            <option value="Skill">Skill</option>
+            <option value="Regalia-Ally">Regalia Ally</option>
+            <option value="Regalia-Item">Regalia Item</option>
+            <option value="Regalia-Phantasia">Regalia Phantasia</option>
+            <option value="Regalia-Weapon">Regalia Weapon</option>
           </select>
 
           <label for="typedesc">Type Desc:</label>
@@ -125,32 +129,31 @@
       {break 10 high}
 {bold}{center}Floating Memory{/center}{/bold}
 </textarea>
-<div id="macroButtons">
-        <!-- Wrapping macros -->
-        <button type="button" title="Wrap in bold" onclick="wrapMacro('{bold}', '{/bold}', 'effect')">Bold</button>
-        <button type="button" title="Wrap in italic" onclick="wrapMacro('{italic}', '{/italic}', 'effect')">Italic</button>
-        <button type="button" title="Wrap in center tag" onclick="wrapMacro('{center}', '{/center}', 'effect')">Center</button>
-        <!-- Special syntax insertions -->
-        <button type="button" title="Insert line break with spacing" onclick="insertMacro('{break 10 high}', 'effect')">Line Break</button><button type="button" title="Wrap in font size span" onclick="wrapMacro('{font-size 19 px}', '{/font-size}', 'effect')">Font Size</button>
-        <button type="button" title="Wrap in line height span" onclick="wrapMacro('{line-height 130%}', '{/line-height}', 'effect')">Line Height</button>
+        <div id="macroButtons">
+          <label for="macros">Text Tools:</label>
+          <!-- Wrapping macros -->
+          <button type="button" title="Wrap in bold" onclick="wrapMacro('{bold}', '{/bold}', 'effect')">Bold</button>
+          <button type="button" title="Wrap in italic" onclick="wrapMacro('{italic}', '{/italic}', 'effect')">Italic</button>
+          <button type="button" title="Wrap in center tag" onclick="wrapMacro('{center}', '{/center}', 'effect')">Center</button>
+          <!-- Special syntax insertions -->
+          <button type="button" title="Insert line break with spacing" onclick="insertMacro('{break 10 high}', 'effect')">Line Break</button><button type="button" title="Wrap in font size span" onclick="wrapMacro('{font-size 19 px}', '{/font-size}', 'effect')">Font Size</button>
+          <button type="button" title="Wrap in line height span" onclick="wrapMacro('{line-height 130%}', '{/line-height}', 'effect')">Line Height</button>
+          <button type="button" title="Wrap in bonus styling" onclick="wrapMacro('{bonus}', '{/bonus}', 'effect')"><span class="effect__icon">Class Bonus</span></button>
+          <button type="button" title="Wrap in cost styling" onclick="wrapMacro('{cost}', '{/cost}', 'effect')"><span class="cost__icon">1</span></button>    
+          <button type="button" title="Insert tap icon" onclick="insertMacro('{tap}', 'effect')">
+            <img src="images/inline-tap.png" style="height: 16px;">
+          </button>
+          <button type="button" title="Insert sword icon" onclick="insertMacro('{sword}', 'effect')">
+            <img src="images/inline-sword.png" style="height: 16px;">
+          </button>
+          <button type="button" title="Insert heart icon" onclick="insertMacro('{heart}', 'effect')">
+            <img src="images/inline-heart.png" style="height: 16px;">
+          </button>
+          <button type="button" title="Insert colon icon" onclick="insertMacro('{colon}', 'effect')">
+            <img src="images/inline-colon.png" style="height: 16px;">
+          </button>        
        </div>
-       <div id="macroButtons">  
-        <!-- Inserting macros -->
-        <button type="button" title="Wrap in bonus styling" onclick="wrapMacro('{bonus}', '{/bonus}', 'effect')"><span class="effect__icon">Class Bonus</span></button>
-        <button type="button" title="Wrap in cost styling" onclick="wrapMacro('{cost}', '{/cost}', 'effect')"><span class="cost__icon">1</span></button>        
-        <button type="button" title="Insert tap icon" onclick="insertMacro('{tap}', 'effect')">
-          <img src="images/inline-tap.png" style="height: 16px;">
-        </button>
-        <button type="button" title="Insert sword icon" onclick="insertMacro('{sword}', 'effect')">
-          <img src="images/inline-sword.png" style="height: 16px;">
-        </button>
-        <button type="button" title="Insert heart icon" onclick="insertMacro('{heart}', 'effect')">
-          <img src="images/inline-heart.png" style="height: 16px;">
-        </button>
-        <button type="button" title="Insert colon icon" onclick="insertMacro('{colon}', 'effect')">
-          <img src="images/inline-colon.png" style="height: 16px;">
-        </button>        
-      </div>
+
         </div>
       </div>
 
@@ -185,7 +188,8 @@
         <span id="cardTypeBar"> <span class="cardSection" id="spacerCardTypeText">Ally — Tamer Ranger Animal Human</span></span>
         <span id="cardTypePoint">&nbsp</span>
       </div>
-      <div class="cardSection" id="cardType"></div>
+      <div class="cardSection" id="cardTypeBackground"></div>
+      <div class="cardSection" id="cardTypeIcon"></div>
       <div class="cardSection" id="cardCostBubble"></div>
       <div class="cardSection" id="cardCost"></div>
       <div class="cardSection" id="cardCharmsContainer"></div>
@@ -919,7 +923,8 @@
     window.onload = function () {
       updateImage('cardElementBackground', document.getElementById('element').value, 'element-border-', true);
       updateImage('cardElementSymbol', document.getElementById('element').value, 'element-symbol-', true);
-      updateImage('cardType', document.getElementById('subtype').value, 'card-type-');
+      updateImage('cardTypeBackground', 'background', 'card-type-');
+      updateImage('cardTypeIcon', document.getElementById('subtype').value, 'card-type-icon-');
       updateImage('cardCostBubble', document.getElementById('costbubble').value, 'cost-');
      
       updateImage('cardTypeBar', document.getElementById('element').value, 'element-bar-', false, 'webp');

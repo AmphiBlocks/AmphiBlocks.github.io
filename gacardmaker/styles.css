@@ -498,7 +498,7 @@ body.theme-dark {
   font-style: normal; /* override native italic to use actual italic font */
 }
 
-#cardType {
+#cardTypeBackground {
   position: absolute;
   top: 463px;
   left: 28px;
@@ -508,6 +508,18 @@ body.theme-dark {
   background-position: bottom right;
   background-size: cover;
   z-index:2;
+}
+
+#cardTypeIcon {
+  position: absolute;
+  top: 468px;
+  left: 34px;
+  width: 19px;
+  height: 19px;
+  background-repeat: no-repeat;
+  background-position: bottom right;
+  background-size: cover;
+  z-index:3;
 }
 
 #cardSpeed {
