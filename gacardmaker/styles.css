@@ -321,7 +321,7 @@ body.theme-dark {
   position: absolute;
   width: 500px;
   top:33px;
-  font-weight:bold;
+  font-weight:normal;
   letter-spacing: 0.5px;
   font-size: 27px;
   font-family: 'CardTitle', 'Linux Libertine Display O', serif;
