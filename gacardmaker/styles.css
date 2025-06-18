@@ -24,48 +24,257 @@
 body {
     font-family: 'CardText', 'Linux Biolinum O', sans-serif;
     margin: 0;
-    color: #000000;
+    padding: 20px;
+    color: #333;
+    background-color: #f5f5f5;
+    line-height: 1.6;
+}
+
+body.theme-light {
+  background: #f5f5f5;
+  color: #222;
+}
+body.theme-dark {
+  background: #181a1b;
+  color: #e0e0e0;
+}
+.theme-light #cardForm,
+.theme-light .accordion-section {
+  background: #fafafa;
+  color: #222;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+}
+.theme-dark #cardForm,
+.theme-dark .accordion-section {
+  background: #23272a;
+  color: #e0e0e0;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.18);
+}
+.theme-light .accordion-toggle {
+  background: #e0e0e0;
+  color: #222;
+}
+.theme-dark .accordion-toggle {
+  background: #23272a;
+  color: #e0e0e0;
+}
+.theme-light .accordion-content {
+  background: #fafafa;
+  color: #222;
+}
+.theme-dark .accordion-content {
+  background: #23272a;
+  color: #e0e0e0;
+}
+.theme-light input, .theme-light select, .theme-light textarea {
+  background: #fff;
+  color: #222;
+  border: 1px solid #bbb;
+}
+.theme-dark input, .theme-dark select, .theme-dark textarea {
+  background: #23272a;
+  color: #e0e0e0;
+  border: 1px solid #444;
+}
+.theme-light .pseudoButton, .theme-light .clear-btn {
+  background: #e0e0e0;
+  color: #222;
+  border: 1px solid #bbb;
+  font-weight: bold;
+}
+.theme-dark .pseudoButton, .theme-dark .clear-btn {
+  background: #23272a;
+  color: #e0e0e0;
+  border: 1px solid #444;
+  font-weight: bold;
+}
+.theme-light #macroButtons button {
+  background: #f0f0f0;
+  color: #222;
+  border: 1px solid #bbb;
+}
+.theme-dark #macroButtons button {
+  background: #23272a;
+  color: #e0e0e0;
+  border: 1px solid #444;
+}
+.theme-light #theme-switcher-container label,
+.theme-light #theme-switcher {
+  color: #222;
+}
+.theme-dark #theme-switcher-container label,
+.theme-dark #theme-switcher {
+  color: #e0e0e0;
 }
 
 #header {
   text-align: center;
+    font-size: 2.5em;
+    margin-bottom: 30px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+    color: #2c3e50;
+    font-family: 'CardTitle', 'Linux Libertine Display O', serif;
 }
 
 #content {
   display: flex;
-  justify-content: left;
-  align-items: left;
-  height: 70vh;
+    gap: 30px;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    font-family: 'CardText', 'Linux Biolinum O', sans-serif;
+}
+
+#cardForm {
+    flex: 1;
+    padding: 20px;
+    background-color: #fafafa;
+    border-radius: 8px;
+    box-shadow: inset 0 0 5px rgba(0,0,0,0.05);
+    font-family: 'CardText', 'Linux Biolinum O', sans-serif;
 }
 
 #cardForm label {
   display: block;
+    margin-bottom: 8px;
+    color: #2c3e50;
+    font-weight: bold;
 }
 
-#cardForm input, #cardForm select, #cardForm textarea, #cardForm .pseudoButton {
+#cardForm input, 
+#cardForm select, 
+#cardForm textarea,
+#cardForm .pseudoButton {
   width: 100%;
-  padding: 8px;
+    padding: 10px;
+    margin-bottom: 15px;
   box-sizing: border-box;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+    border: 2px solid #ddd;
+    border-radius: 6px;
+    font-size: 14px;
+    transition: border-color 0.3s ease;
+}
+
+#cardForm input:focus, 
+#cardForm select:focus, 
+#cardForm textarea:focus {
+    border-color: #3498db;
+    outline: none;
+    box-shadow: 0 0 5px rgba(52,152,219,0.3);
 }
 
 #cardForm textarea {
   height: 140px;
+    resize: vertical;
 }
 
 #cardForm button {
-  background-color: #4CAF50;
+    background-color: #3498db;
   color: white;
-  padding: 10px 20px;
+    padding: 12px 20px;
   border: none;
-  border-radius: 4px;
+    border-radius: 6px;
   cursor: pointer;
    width: 100%;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
 }
 
 #cardForm button:hover {
-  background-color: #45a049;
+    background-color: #2980b9;
+}
+
+.pseudoButton {
+    display: inline-block;
+    padding: 8px 15px;
+    background-color: #e0e0e0;
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.3s ease;
+    font-weight: bold;
+}
+
+.pseudoButton:hover {
+    background-color: #d0d0d0;
+}
+
+#macroButtons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 8px;
+}
+
+#macroButtons button {
+    display: inline-block;
+    width: auto !important;
+    flex: 0 0 auto;
+    padding: 4px 10px;
+    font-size: 12px;
+    cursor: pointer;
+    white-space: nowrap;
+    background-color: grey;
+    border-color: black;
+    border-width: 1px;
+}
+
+#macroButtons button:hover {
+    background-color: #e0e0e0;
+    transform: translateY(-1px);
+}
+
+#cardRenderResults {
+    position: absolute;
+    align-items: center;
+    text-align: center;
+    top: 720px;
+    left: 100px;
+    background-color: white;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+#cardShareURL {
+    padding: 8px;
+    width: 300px;
+    border: 2px solid #ddd;
+    border-radius: 4px;
+    margin-right: 10px;
+}
+
+#copyURLButton {
+    padding: 8px 15px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#copyURLButton:hover {
+    background-color: #2980b9;
+}
+
+@media (max-width: 1200px) {
+    #content {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    #cardForm {
+        width: 100%;
+        max-width: 600px;
+    }
+}
+
+#cardContainer, #cardContainer * {
+  color: initial !important;
 }
 
 #cardContainer {
@@ -77,6 +286,18 @@ body {
   background-size: cover;
   cursor: move;
   user-select: none;
+}
+
+#cardEffectContainer b,
+#cardEffectContainer strong {
+  font-family: 'CardTextBold', 'CardText', 'Linux Biolinum O', sans-serif;
+  font-weight: normal;
+}
+
+#cardEffectContainer i,
+#cardEffectContainer em {
+  font-family: 'CardTextItalic', 'CardText', 'Linux Biolinum O', sans-serif;
+  font-style: normal; /* override native italic to use actual italic font */
 }
 
 #cardCoverContainer {
@@ -96,41 +317,17 @@ body {
   z-index: 100; 
 }
 
-#cardRenderResults {
-  position: absolute;
-  align-items: center;
-  text-align: center;
-  top: 720px;
-  left: 100px;
-}
-
-#cardShareURL {
-  padding:4px;
-}
-
-#copyURLButton {
-  padding:4px;
-}
-
-.cardSection {
-  padding: 0px;
-}
-
-#cardForm {
-  padding: 10px;
-  width: 100%;
-}
-
 #cardTitle {
   position: absolute;
   width: 500px;
   top:33px;
-  font-wight:bold;
+  font-weight:bold;
   letter-spacing: 0.5px;
   font-size: 27px;
   font-family: 'CardTitle', 'Linux Libertine Display O', serif;
   text-align: center;
   z-index:10;
+  line-height: 30px;
 }
 
 #cardArtClip {
@@ -255,6 +452,7 @@ body {
   bottom:5.5px;
   opacity:1;
   z-index:3;
+  line-height: 20px;
 } 
 
 #cardTypePoint {
@@ -356,6 +554,12 @@ body {
     object-fit: contain;
 }
 
+#cardContainer #cardPower,
+#cardContainer #cardLife,
+#cardContainer #cardDurability {
+  color: #fff !important;
+}
+
 #cardPower, #cardLife, #cardDurability {
   width:50px;
   height: 28px;
@@ -369,33 +573,14 @@ body {
   text-align: center;
   vertical-align: middle;
   padding: 2px 0px 0px 20px;
-}
-
-#macroButtons {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  margin-bottom: 8px;
-}
-
-#macroButtons button {
-  display: inline-block;    /* Ensure buttons don't span full width */
-  width: auto !important;   /* Override any inherited 100% width */
-  flex: 0 0 auto;           
-  padding: 4px 10px;
-  font-size: 12px;
-  cursor: pointer;
-  white-space: nowrap;
-  background-color:grey;
-  border-color:black;
-  border-width: 1px;
+  line-height: 30px;
 }
 
 #cardEffect {
   display: inline-block;
   vertical-align: middle;
   line-height: 20px;
-  wdith:420px;
+  width:420px;
   z-index:3;
 }
 
@@ -403,6 +588,10 @@ body {
   vertical-align: middle;
   padding: 0px 1px 4px 1px;
   z-index:3;
+}
+
+#cardContainer .effect__icon {
+  color: #fff !important;
 }
 
 .effect__icon {
@@ -417,6 +606,7 @@ body {
   text-align:top;
   text-shadow:none;
   z-index:3;
+  color: #fff !important;
 }
 
 .cost__icon {
@@ -476,17 +666,861 @@ body {
   z-index:2;
 }
 
-
-@media (max-width: 1000px) {
-  #content {
+.card-form-stats-row {
+  display: flex;
+  gap: 18px;
+  align-items: flex-start;
+  margin-bottom: 10px;
+}
+.stat-group {
+  display: flex;
       flex-direction: column;
-      align-items: center;
-  }
+  align-items: flex-start;
+  min-width: 70px;
+}
+.stat-group label {
+  margin-bottom: 2px;
+}
+.stat-group input[type="number"] {
+  margin-bottom: 2px;
+}
+.clear-btn {
+  font-size: 11px;
+  padding: 2px 6px;
+  margin: 0;
+  background: #eee;
+  border: 1px solid #bbb;
+  border-radius: 3px;
+  color: #444;
+  cursor: pointer;
+  transition: background 0.2s;
+  width: 38px;
+  align-self: center;
+  font-weight: bold;
+}
+.clear-btn:hover {
+  background: #e0e0e0;
+  color: #222;
+}
 
-  #cardForm {
+#cardForm textarea#setrarity,
+#cardForm textarea#copyright {
+  height: 80px;
+}
+
+.accordion-section {
+  margin-bottom: 14px;
+  border-radius: 6px;
+  background: #f2f2f2;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+  padding: 0;
+}
+.accordion-toggle {
       width: 100%;
-      margin-top: 20px;
-  }
+  background: #e0e0e0;
+  border: none;
+  outline: none;
+  font-size: 15px;
+  font-weight: bold;
+  padding: 10px 12px;
+  border-radius: 6px 6px 0 0;
+  cursor: pointer;
+  text-align: left;
+  transition: background 0.2s;
+}
+.accordion-toggle:hover {
+  background: #d0d0d0;
+}
+.accordion-content {
+  padding: 12px 14px 10px 14px;
+  border-top: 1px solid #ddd;
+  background: #fafafa;
+  border-radius: 0 0 6px 6px;
+}
 
+#cardContainer #cardSetRarity,
+#cardContainer #cardCopyright {
+  color: #fff !important;
+}
 
+#cardContainer #cardStats {
+  color: #fff !important;
+}
+
+#theme-switcher-container {
+  position: absolute;
+  top: 18px;
+  right: 32px;
+  z-index: 1000;
+  background: transparent;
+  padding: 0;
+  margin: 0;
+}
+
+.theme-light #content {
+  background: #fff;
+}
+.theme-dark #content {
+  background: #181a1b;
+}
+
+.theme-dark #cardForm label,
+.theme-dark .accordion-content label {
+  color: #6ec1ff !important;
+}
+
+.theme-dark #header {
+  color: #6ec1ff !important;
+}
+
+.theme-norm {
+  background: #f3ede7;
+  color: #222;
+}
+.theme-norm #content {
+  background: #ede7df;
+}
+.theme-norm #cardForm,
+.theme-norm .accordion-section {
+  background: #e6e6e6;
+  color: #222;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+  border: 1.5px solid #bfae7c;
+}
+.theme-norm .accordion-toggle {
+  background: #b8aea8 !important;
+  color: #222 !important;
+  border-bottom: 2px solid #bfae7c !important;
+}
+.theme-norm .accordion-content {
+  background: #e6e6e6;
+  color: #222;
+}
+.theme-norm input, .theme-norm select, .theme-norm textarea {
+  background: #fff;
+  color: #222;
+  border: 1px solid #bfae7c;
+}
+.theme-norm .pseudoButton, .theme-norm .clear-btn {
+  background: #e6e6e6;
+  color: #222;
+  border: 1px solid #bfae7c;
+  font-weight: bold;
+}
+.theme-norm #macroButtons button {
+  background: #f8f8f8;
+  color: #222;
+  border: 1px solid #bfae7c;
+}
+.theme-norm #theme-switcher-container label,
+.theme-norm #theme-switcher {
+  color: #222;
+}
+.theme-norm #header {
+  color: #bfae7c !important;
+}
+
+.theme-norm button,
+.theme-norm #macroButtons button,
+.theme-norm .pseudoButton,
+.theme-norm .clear-btn {
+  background: #b8aea8 !important;
+  color: #222 !important;
+  border: 1px solid #bfae7c !important;
+  font-weight: bold;
+}
+.theme-norm button:hover,
+.theme-norm #macroButtons button:hover,
+.theme-norm .pseudoButton:hover,
+.theme-norm .clear-btn:hover {
+  background: #a89e98 !important;
+  color: #222 !important;
+}
+
+.theme-water {
+  background: #e6f7fa;
+  color: #222;
+}
+.theme-water #content {
+  background: #e6f7fa;
+}
+.theme-water #cardForm,
+.theme-water .accordion-section {
+  background: #f4fbfd;
+  color: #222;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+  border: 1.5px solid #3bb6e7;
+}
+.theme-water .accordion-toggle {
+  background: #3bb6e7 !important;
+  color: #fff !important;
+  border-bottom: 2px solid #3bb6e7 !important;
+}
+.theme-water .accordion-content {
+  background: #f4fbfd;
+  color: #222;
+}
+.theme-water input, .theme-water select, .theme-water textarea {
+  background: #fff;
+  color: #222;
+  border: 1px solid #3bb6e7;
+}
+.theme-water .pseudoButton, .theme-water .clear-btn {
+  background: #3bb6e7 !important;
+  color: #fff !important;
+  border: 1px solid #3bb6e7 !important;
+  font-weight: bold;
+}
+.theme-water #macroButtons button {
+  background: #e6f7fa !important;
+  color: #222 !important;
+  border: 1px solid #3bb6e7 !important;
+}
+.theme-water #theme-switcher-container label,
+.theme-water #theme-switcher {
+  color: #3bb6e7;
+}
+.theme-water #header {
+  color: #3bb6e7 !important;
+}
+.theme-water button,
+.theme-water #macroButtons button,
+.theme-water .pseudoButton,
+.theme-water .clear-btn {
+  background: #3bb6e7 !important;
+  color: #fff !important;
+  border: 1px solid #3bb6e7 !important;
+  font-weight: bold;
+}
+.theme-water button:hover,
+.theme-water #macroButtons button:hover,
+.theme-water .pseudoButton:hover,
+.theme-water .clear-btn:hover {
+  background: #2496c7 !important;
+  color: #fff !important;
+}
+
+.theme-wind {
+  background: #f6fbf4;
+  color: #222;
+}
+.theme-wind #content {
+  background: #f6fbf4;
+}
+.theme-wind #cardForm,
+.theme-wind .accordion-section {
+  background: #f6fbf4;
+  color: #222;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+  border: 1.5px solid #7ed957;
+}
+.theme-wind .accordion-toggle {
+  background: #7ed957 !important;
+  color: #222 !important;
+  border-bottom: 2px solid #e6d96b !important;
+}
+.theme-wind .accordion-content {
+  background: #f6fbf4;
+  color: #222;
+}
+.theme-wind input, .theme-wind select, .theme-wind textarea {
+  background: #fff;
+  color: #222;
+  border: 1px solid #7ed957;
+}
+.theme-wind .pseudoButton, .theme-wind .clear-btn {
+  background: #7ed957 !important;
+  color: #222 !important;
+  border: 1px solid #e6d96b !important;
+  font-weight: bold;
+}
+.theme-wind #macroButtons button {
+  background: #f6fbf4 !important;
+  color: #222 !important;
+  border: 1px solid #7ed957 !important;
+}
+.theme-wind #theme-switcher-container label,
+.theme-wind #theme-switcher {
+  color: #7ed957;
+}
+.theme-wind #header {
+  color: #7ed957 !important;
+}
+.theme-wind button,
+.theme-wind #macroButtons button,
+.theme-wind .pseudoButton,
+.theme-wind .clear-btn {
+  background: #7ed957 !important;
+  color: #222 !important;
+  border: 1px solid #e6d96b !important;
+  font-weight: bold;
+}
+.theme-wind button:hover,
+.theme-wind #macroButtons button:hover,
+.theme-wind .pseudoButton:hover,
+.theme-wind .clear-btn:hover {
+  background: #6cc94a !important;
+  color: #222 !important;
+}
+
+.theme-fire {
+  background: #fff5f0;
+  color: #222;
+}
+.theme-fire #content {
+  background: #fff5f0;
+}
+.theme-fire #cardForm,
+.theme-fire .accordion-section {
+  background: #fff5f0;
+  color: #222;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+  border: 1.5px solid #c23b22;
+}
+.theme-fire .accordion-toggle {
+  background: #c23b22 !important;
+  color: #fff !important;
+  border-bottom: 2px solid #e6d96b !important;
+}
+.theme-fire .accordion-content {
+  background: #fff5f0;
+  color: #222;
+}
+.theme-fire input, .theme-fire select, .theme-fire textarea {
+  background: #fff;
+  color: #222;
+  border: 1px solid #c23b22;
+}
+.theme-fire .pseudoButton, .theme-fire .clear-btn {
+  background: #c23b22 !important;
+  color: #fff !important;
+  border: 1px solid #e6d96b !important;
+  font-weight: bold;
+}
+.theme-fire #macroButtons button {
+  background: #fff5f0 !important;
+  color: #222 !important;
+  border: 1px solid #c23b22 !important;
+}
+.theme-fire #theme-switcher-container label,
+.theme-fire #theme-switcher {
+  color: #c23b22;
+}
+.theme-fire #header {
+  color: #c23b22 !important;
+}
+.theme-fire button,
+.theme-fire #macroButtons button,
+.theme-fire .pseudoButton,
+.theme-fire .clear-btn {
+  background: #c23b22 !important;
+  color: #fff !important;
+  border: 1px solid #e6d96b !important;
+  font-weight: bold;
+}
+.theme-fire button:hover,
+.theme-fire #macroButtons button:hover,
+.theme-fire .pseudoButton:hover,
+.theme-fire .clear-btn:hover {
+  background: #a32a13 !important;
+  color: #fff !important;
+}
+
+.theme-tera {
+  background: #14291e;
+  color: #fff;
+}
+.theme-tera #content {
+  background: #1b3a29;
+}
+.theme-tera #cardForm,
+.theme-tera .accordion-section {
+  background: #1b3a29;
+  color: #fff;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.08);
+  border: 1.5px solid #178a5c;
+}
+.theme-tera .accordion-toggle {
+  background: #7ed9b0 !important;
+  color: #14291e !important;
+  border-bottom: 2px solid #178a5c !important;
+}
+.theme-tera .accordion-content {
+  background: #1b3a29;
+  color: #fff;
+}
+.theme-tera input, .theme-tera select, .theme-tera textarea {
+  background: #14291e;
+  color: #fff;
+  border: 1px solid #178a5c;
+}
+.theme-tera .pseudoButton, .theme-tera .clear-btn {
+  background: #7ed9b0 !important;
+  color: #fff !important;
+  border: 1px solid #178a5c !important;
+  font-weight: bold;
+}
+.theme-tera #macroButtons button {
+  background: #1b3a29 !important;
+  color: #fff !important;
+  border: 1px solid #178a5c !important;
+}
+.theme-tera #theme-switcher-container label,
+.theme-tera #theme-switcher {
+  color: #7ed9b0;
+}
+.theme-tera #header {
+  color: #7ed9b0 !important;
+}
+.theme-tera button,
+.theme-tera #macroButtons button,
+.theme-tera .pseudoButton,
+.theme-tera .clear-btn {
+  background: #7ed9b0 !important;
+  color: #14291e !important;
+  border: 1px solid #178a5c !important;
+  font-weight: bold;
+}
+.theme-tera button:hover,
+.theme-tera #macroButtons button:hover,
+.theme-tera .pseudoButton:hover,
+.theme-tera .clear-btn:hover {
+  background: #178a5c !important;
+  color: #fff !important;
+}
+.theme-tera #cardForm label,
+.theme-tera .accordion-content label {
+  color: #7ed9b0 !important;
+}
+
+.theme-luxem {
+  background: #fffbe6;
+  color: #222;
+}
+.theme-luxem #content {
+  background: #fffbe6;
+}
+.theme-luxem #cardForm,
+.theme-luxem .accordion-section {
+  background: #fffbe6;
+  color: #222;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+  border: 1.5px solid #e6d96b;
+}
+.theme-luxem .accordion-toggle {
+  background: #ffe066 !important;
+  color: #222 !important;
+  border-bottom: 2px solid #e6d96b !important;
+}
+.theme-luxem .accordion-content {
+  background: #fffbe6;
+  color: #222;
+}
+.theme-luxem input, .theme-luxem select, .theme-luxem textarea {
+  background: #fff;
+  color: #222;
+  border: 1px solid #e6d96b;
+}
+.theme-luxem .pseudoButton, .theme-luxem .clear-btn {
+  background: #ffe066 !important;
+  color: #222 !important;
+  border: 1px solid #e6d96b !important;
+  font-weight: bold;
+}
+.theme-luxem #macroButtons button {
+  background: #fffbe6 !important;
+  color: #222 !important;
+  border: 1px solid #e6d96b !important;
+}
+.theme-luxem #theme-switcher-container label,
+.theme-luxem #theme-switcher {
+  color: #e6d96b;
+}
+.theme-luxem #header {
+  color: #ffe066 !important;
+}
+.theme-luxem button,
+.theme-luxem #macroButtons button,
+.theme-luxem .pseudoButton,
+.theme-luxem .clear-btn {
+  background: #ffe066 !important;
+  color: #222 !important;
+  border: 1px solid #e6d96b !important;
+  font-weight: bold;
+}
+.theme-luxem button:hover,
+.theme-luxem #macroButtons button:hover,
+.theme-luxem .pseudoButton:hover,
+.theme-luxem .clear-btn:hover {
+  background: #e6d96b !important;
+  color: #222 !important;
+}
+
+.theme-arcane {
+  background: #23243a;
+  color: #fff;
+}
+.theme-arcane #content {
+  background: #2d2e4a;
+}
+.theme-arcane #cardForm,
+.theme-arcane .accordion-section {
+  background: #2d2e4a;
+  color: #fff;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.08);
+  border: 1.5px solid #6b7fff;
+}
+.theme-arcane .accordion-toggle {
+  background: #bfcfff !important;
+  color: #23243a !important;
+  border-bottom: 2px solid #6b7fff !important;
+}
+.theme-arcane .accordion-content {
+  background: #2d2e4a;
+  color: #fff;
+}
+.theme-arcane input, .theme-arcane select, .theme-arcane textarea {
+  background: #23243a;
+  color: #fff;
+  border: 1px solid #6b7fff;
+}
+.theme-arcane .pseudoButton, .theme-arcane .clear-btn {
+  background: #bfcfff !important;
+  color: #23243a !important;
+  border: 1px solid #6b7fff !important;
+  font-weight: bold;
+}
+.theme-arcane #macroButtons button {
+  background: #2d2e4a !important;
+  color: #fff !important;
+  border: 1px solid #6b7fff !important;
+}
+.theme-arcane #theme-switcher-container label,
+.theme-arcane #theme-switcher {
+  color: #bfcfff;
+}
+.theme-arcane #header {
+  color: #bfcfff !important;
+}
+.theme-arcane button,
+.theme-arcane #macroButtons button,
+.theme-arcane .pseudoButton,
+.theme-arcane .clear-btn {
+  background: #bfcfff !important;
+  color: #23243a !important;
+  border: 1px solid #6b7fff !important;
+  font-weight: bold;
+}
+.theme-arcane button:hover,
+.theme-arcane #macroButtons button:hover,
+.theme-arcane .pseudoButton:hover,
+.theme-arcane .clear-btn:hover {
+  background: #6b7fff !important;
+  color: #fff !important;
+}
+
+.theme-arcane #cardForm label,
+.theme-arcane .accordion-content label {
+  color: #bfcfff !important;
+}
+
+.theme-exia {
+  background: #1a080a;
+  color: #fff;
+}
+.theme-exia #content {
+  background: #2a1013;
+}
+.theme-exia #cardForm,
+.theme-exia .accordion-section {
+  background: #2a1013;
+  color: #fff;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.08);
+  border: 1.5px solid #b71c2a;
+}
+.theme-exia .accordion-toggle {
+  background: #f7b6b6 !important;
+  color: #1a080a !important;
+  border-bottom: 2px solid #b71c2a !important;
+}
+.theme-exia .accordion-content {
+  background: #2a1013;
+  color: #fff;
+}
+.theme-exia input, .theme-exia select, .theme-exia textarea {
+  background: #1a080a;
+  color: #fff;
+  border: 1px solid #b71c2a;
+}
+.theme-exia .pseudoButton, .theme-exia .clear-btn {
+  background: #f7b6b6 !important;
+  color: #1a080a !important;
+  border: 1px solid #b71c2a !important;
+  font-weight: bold;
+}
+.theme-exia #macroButtons button {
+  background: #2a1013 !important;
+  color: #fff !important;
+  border: 1px solid #b71c2a !important;
+}
+.theme-exia #theme-switcher-container label,
+.theme-exia #theme-switcher {
+  color: #f7b6b6;
+}
+.theme-exia #header {
+  color: #f7b6b6 !important;
+}
+.theme-exia button,
+.theme-exia #macroButtons button,
+.theme-exia .pseudoButton,
+.theme-exia .clear-btn {
+  background: #f7b6b6 !important;
+  color: #1a080a !important;
+  border: 1px solid #b71c2a !important;
+  font-weight: bold;
+}
+.theme-exia button:hover,
+.theme-exia #macroButtons button:hover,
+.theme-exia .pseudoButton:hover,
+.theme-exia .clear-btn:hover {
+  background: #b71c2a !important;
+  color: #fff !important;
+}
+.theme-exia #cardForm label,
+.theme-exia .accordion-content label {
+  color: #f7b6b6 !important;
+}
+
+.theme-neos {
+  background: #3a1e06;
+  color: #fff;
+}
+.theme-neos #content {
+  background: #fffbe6;
+  color: #18120a;
+}
+.theme-neos #cardForm,
+.theme-neos .accordion-section {
+  background: #fffbe6;
+  color: #18120a;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.08);
+  border: 1.5px solid #e6c15c;
+}
+.theme-neos .accordion-toggle {
+  background: #ffe9a3 !important;
+  color: #18120a !important;
+  border-bottom: 2px solid #e6c15c !important;
+}
+.theme-neos .accordion-content {
+  background: #fffbe6;
+  color: #18120a;
+}
+.theme-neos input, .theme-neos select, .theme-neos textarea {
+  background: #fff;
+  color: #18120a;
+  border: 1px solid #e6c15c;
+}
+.theme-neos .pseudoButton, .theme-neos .clear-btn {
+  background: #ffe9a3 !important;
+  color: #18120a !important;
+  border: 1px solid #e6c15c !important;
+  font-weight: bold;
+}
+.theme-neos #macroButtons button {
+  background: #fffbe6 !important;
+  color: #18120a !important;
+  border: 1px solid #e6c15c !important;
+}
+.theme-neos #theme-switcher-container label,
+.theme-neos #theme-switcher {
+  color: #e6c15c;
+}
+.theme-neos #header {
+  color: #e6c15c !important;
+}
+.theme-neos button,
+.theme-neos #macroButtons button,
+.theme-neos .pseudoButton,
+.theme-neos .clear-btn {
+  background: #ffe9a3 !important;
+  color: #18120a !important;
+  border: 1px solid #e6c15c !important;
+  font-weight: bold;
+}
+.theme-neos button:hover,
+.theme-neos #macroButtons button:hover,
+.theme-neos .pseudoButton:hover,
+.theme-neos .clear-btn:hover {
+  background: #e6c15c !important;
+  color: #fff !important;
+}
+.theme-neos #cardForm label,
+.theme-neos .accordion-content label {
+  color: #e6c15c !important;
+}
+
+.theme-umbra {
+  background: #1a0a1f;
+  color: #fff;
+}
+.theme-umbra #content {
+  background: #ede6fa;
+  color: #1a1020;
+}
+.theme-umbra #cardForm,
+.theme-umbra .accordion-section {
+  background: #ede6fa;
+  color: #1a1020;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.08);
+  border: 1.5px solid #6d3a9c;
+}
+.theme-umbra .accordion-toggle {
+  background: #ede6fa !important;
+  color: #6d3a9c !important;
+  border-bottom: 2px solid #6d3a9c !important;
+}
+.theme-umbra .accordion-content {
+  background: #ede6fa;
+  color: #1a1020;
+}
+.theme-umbra input, .theme-umbra select, .theme-umbra textarea {
+  background: #fff;
+  color: #1a1020;
+  border: 1px solid #6d3a9c;
+}
+.theme-umbra .pseudoButton, .theme-umbra .clear-btn {
+  background: #6d3a9c !important;
+  color: #ede6fa !important;
+  border: 1px solid #6d3a9c !important;
+  font-weight: bold;
+}
+.theme-umbra #macroButtons button {
+  background: #ede6fa !important;
+  color: #6d3a9c !important;
+  border: 1px solid #6d3a9c !important;
+}
+.theme-umbra #theme-switcher-container label,
+.theme-umbra #theme-switcher {
+  color: #6d3a9c;
+}
+.theme-umbra #header {
+  color: #6d3a9c !important;
+}
+.theme-umbra button,
+.theme-umbra #macroButtons button,
+.theme-umbra .pseudoButton,
+.theme-umbra .clear-btn {
+  background: #6d3a9c !important;
+  color: #ede6fa !important;
+  border: 1px solid #6d3a9c !important;
+  font-weight: bold;
+}
+.theme-umbra button:hover,
+.theme-umbra #macroButtons button:hover,
+.theme-umbra .pseudoButton:hover,
+.theme-umbra .clear-btn:hover {
+  background: #1a0a1f !important;
+  color: #ede6fa !important;
+}
+.theme-umbra #cardForm label,
+.theme-umbra .accordion-content label {
+  color: #6d3a9c !important;
+}
+
+.theme-crux {
+  background: #f7faff;
+  color: #2c4a5c;
+}
+.theme-crux #content {
+  background: #eaf6fa;
+  color: #2c4a5c;
+}
+.theme-crux #cardForm,
+.theme-crux .accordion-section {
+  background: #eaf6fa;
+  color: #2c4a5c;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.08);
+  border: 2px solid #e6b6d6;
+}
+.theme-crux .accordion-toggle {
+  background: #e6b6d6 !important;
+  color: #3a6a7c !important;
+  border-bottom: 2px solid #3a6a7c !important;
+}
+.theme-crux .accordion-content {
+  background: #eaf6fa;
+  color: #2c4a5c;
+}
+.theme-crux input, .theme-crux select, .theme-crux textarea {
+  background: #fff;
+  color: #2c4a5c;
+  border: 1px solid #e6b6d6;
+}
+.theme-crux .pseudoButton, .theme-crux .clear-btn {
+  background: #e6b6d6 !important;
+  color: #3a6a7c !important;
+  border: 1px solid #3a6a7c !important;
+  font-weight: bold;
+}
+.theme-crux #macroButtons button {
+  background: #e6b6d6 !important;
+  color: #3a6a7c !important;
+  border: 1px solid #3a6a7c !important;
+}
+.theme-crux #theme-switcher-container label,
+.theme-crux #theme-switcher {
+  color: #3a6a7c;
+}
+.theme-crux #header {
+  color: #e6b6d6 !important;
+}
+.theme-crux button,
+.theme-crux #macroButtons button,
+.theme-crux .pseudoButton,
+.theme-crux .clear-btn {
+  background: #e6b6d6 !important;
+  color: #3a6a7c !important;
+  border: 1px solid #3a6a7c !important;
+  font-weight: bold;
+}
+.theme-crux button:hover,
+.theme-crux #macroButtons button:hover,
+.theme-crux .pseudoButton:hover,
+.theme-crux .clear-btn:hover {
+  background: #3a6a7c !important;
+  color: #eaf6fa !important;
+}
+.theme-crux #cardForm label,
+.theme-crux .accordion-content label {
+  color: #e6b6d6 !important;
+}
+
+.theme-tera .pseudoButton, .theme-tera .clear-btn {
+  color: #14291e !important;
+}
+.theme-arcane .pseudoButton, .theme-arcane .clear-btn {
+  color: #23243a !important;
+}
+.theme-exia .pseudoButton, .theme-exia .clear-btn {
+  color: #1a080a !important;
+}
+.theme-neos .pseudoButton, .theme-neos .clear-btn {
+  color: #18120a !important;
+}
+.theme-umbra .pseudoButton, .theme-umbra .clear-btn {
+  color: #ede6fa !important;
+}
+.theme-crux .pseudoButton, .theme-crux .clear-btn {
+  color: #3a6a7c !important;
+}
+
+.theme-tera .pseudoButtonText { color: #14291e !important; }
+.theme-arcane .pseudoButtonText { color: #23243a !important; }
+.theme-exia .pseudoButtonText { color: #1a080a !important; }
+.theme-neos .pseudoButtonText { color: #18120a !important; }
+.theme-umbra .pseudoButtonText { color: #ede6fa !important; }
+.theme-crux .pseudoButtonText { color: #3a6a7c !important; }
+
+.pseudoButtonText {
+  color: inherit;
 }
