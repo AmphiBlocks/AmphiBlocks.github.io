@@ -288,18 +288,6 @@ body.theme-dark {
   user-select: none;
 }
 
-#cardEffectContainer b,
-#cardEffectContainer strong {
-  font-family: 'CardTextBold', 'CardText', 'Linux Biolinum O', sans-serif;
-  font-weight: normal;
-}
-
-#cardEffectContainer i,
-#cardEffectContainer em {
-  font-family: 'CardTextItalic', 'CardText', 'Linux Biolinum O', sans-serif;
-  font-style: normal; /* override native italic to use actual italic font */
-}
-
 #cardCoverContainer {
   width: 500px;
   height: 700px;
@@ -488,13 +476,13 @@ body.theme-dark {
 
 #cardEffectContainer b,
 #cardEffectContainer strong {
-  font-family: 'CardTextBold', 'CardText', 'Linux Biolinum O', sans-serif;
+  font-family: 'CardTextBold', 'Linux Biolinum O', sans-serif;
   font-weight: normal;
 }
 
 #cardEffectContainer i,
 #cardEffectContainer em {
-  font-family: 'CardTextItalic', 'CardText', 'Linux Biolinum O', sans-serif;
+  font-family: 'CardTextItalic','Linux Biolinum O', sans-serif;
   font-style: normal; /* override native italic to use actual italic font */
 }
 
@@ -522,23 +510,11 @@ body.theme-dark {
   z-index:3;
 }
 
-#cardSpeed {
-  position: absolute;
-  bottom: 36px;
-  right: 27px;
-  width: 200px;
-  height: 30px;
-  background-repeat: no-repeat;
-  background-position: bottom right;
-  background-size: contain;
-  z-index:2;
-}
-
 #cardStats {
   position: absolute;
   bottom: 36px;
   right: 27px;
-  width: 240px;
+  width: 340px;
   height: 30px;
   align-items: right;
   align-content: right;
@@ -586,6 +562,23 @@ body.theme-dark {
   vertical-align: middle;
   padding: 2px 0px 0px 20px;
   line-height: 30px;
+}
+
+#cardSpeed {
+  width:70px;
+  height: 28px;
+  display:inline-block;
+  background-repeat: no-repeat;
+  background-position: bottom right;
+  background-size: contain;
+  color:#fff;
+  font-size:24px;
+  font-family: 'CardText', 'Linux Biolinum O', sans-serif, bold;
+  text-align: center;
+  vertical-align: middle;
+  padding: 2px 4px 0px 12px;
+  line-height: 30px;
+  z-index:2;
 }
 
 #cardEffect {
