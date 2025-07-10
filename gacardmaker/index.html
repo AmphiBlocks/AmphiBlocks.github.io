@@ -236,8 +236,8 @@
             </div>
           </div>
           <label for="speed">Speed:</label>
-          <select id="speed" name="speed" onchange="updateImage('cardSpeed', this.value, 'speed-')">
-            <option value="None">None</option>
+          <select id="speed" name="speed" onchange="updateStatsImage('cardSpeed', this.value, 'speed-');">
+            <option selected value="None">None</option>
             <option value="Fast">Fast</option>
             <option value="Slow">Slow</option>
           </select>
@@ -765,6 +765,19 @@
       hideRenderContainer();
     }
 
+    function updateStatsImage(sectionId, value, format, imagetype = "png") {
+      var element = document.getElementById(sectionId);
+      element.style.backgroundImage = `url('${baseURL()}images/${format.toLowerCase()}${value.toLowerCase()}.${imagetype}')`;
+      if (value=='None'){
+        element.style.visibility=`hidden`;
+        element.style.position=`absolute`;
+      } else {
+        element.style.visibility=`visible`;
+        element.style.position=`relative`;
+      }
+      hideRenderContainer();
+    }
+
     function render(){
       if (document.getElementById("cardRenderContainer").style.visibility!="hidden"){
         return;
@@ -936,9 +949,10 @@
       updateText('cardSetRarity', document.getElementById('setrarity').value);
       updateText('cardCopyright', document.getElementById('copyright').value);
 
-      updateStats('cardPower', document.getElementById('power').value)
-      updateStats('cardLife', document.getElementById('life').value)
-      updateStats('cardDurability', document.getElementById('durability').value)
+      updateStats('cardPower', document.getElementById('power').value, 'stat-power')
+      updateStats('cardLife', document.getElementById('life').value, 'stat-life')
+      updateStats('cardDurability', document.getElementById('durability').value,  'stat-durability')
+      updateStatsImage('cardSpeed', document.getElementById('speed').value, "speed-")
 
       updateImage('cardPower', 'stat-power', '');
       updateImage('cardLife', 'stat-life', '');
