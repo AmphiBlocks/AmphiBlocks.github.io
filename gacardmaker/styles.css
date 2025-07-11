@@ -342,6 +342,17 @@ body.theme-dark {
   z-index:1;
 }
 
+#cardTitleModifier {
+  position: absolute;
+  background-size: cover;
+  width: 500px;
+  height: 700px;              /* Height scales with aspect ratio */
+  background-size: 100% auto;/* Fit horizontally, scale height */
+  background-repeat: no-repeat;
+  background-position: top left;
+  z-index:2;
+}
+
 #combinedCanvas {
   -webkit-border-radius:16px;
   position: absolute;
